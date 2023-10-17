@@ -7,6 +7,7 @@ import com.salihguler.JavaFullStackDeveloper.data.entity.BlogEntity;
 import com.salihguler.JavaFullStackDeveloper.data.entity.CategoryEntity;
 import com.salihguler.JavaFullStackDeveloper.data.repository.ICategoryRepository;
 import com.salihguler.JavaFullStackDeveloper.exception.ResourceNotFoundException;
+import com.salihguler.JavaFullStackDeveloper.exception.SalihGulerException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -112,7 +113,7 @@ public class CategoryServicesImpl implements ICategoryServices<CategoryDto, Cate
        }
        else if(id==null)
        {
-            new Exception("id null olarak gedi");
+            new SalihGulerException("id null olarak gedi");
        }
 
 
@@ -129,7 +130,7 @@ public class CategoryServicesImpl implements ICategoryServices<CategoryDto, Cate
         CategoryEntity categoryEntity=dtoToEntity(categoryFindDto);
         categoryEntity.setCategoryName(categoryFindDto.getCategoryName());
         iCategoryRepository.save(categoryEntity);
-            //dönüşte ID ve DAte Set et
+            //dönüşte ID ve Date Set et
 
     }
 
